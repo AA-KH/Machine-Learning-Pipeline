@@ -8,6 +8,7 @@ import joblib
 
 app = FastAPI()
 model = joblib.load("house_price_pipeline.pkl")
+df = pd.read_csv("Housing.csv")
 
 class House(BaseModel):
     area:int
@@ -63,4 +64,5 @@ def predict(house:House):
     )
 
     prediction = model.predict(data)[0]
-    return {"price":float(prediction)}
+    percentile = ((df["price"] < prediction).sum()/len(df)) * 100
+    return {"price": float(prediction),"percentile": float(percentile)}

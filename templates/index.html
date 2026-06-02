@@ -302,16 +302,12 @@ async function predictPrice()
 
     document.getElementById("houseLevel").innerHTML = "Property Class: " + level
 
-    let position =((result.price - 1750000)/(13300000 - 1750000)) * 100
-    if(position < 0){
-        position = 0
-    }
-    if(position > 100){
-        position = 100
-    }
+    document.getElementById(
+    "pricePosition"
+).value =
+    result.percentile
 
-    document.getElementById("pricePosition").value = position
-    document.getElementById("positionText").innerHTML = "This property is more expensive than approximately " + position.toFixed(1) + "% of houses in the dataset"
+document.getElementById("positionText").innerHTML = "This property is more expensive than approximately " + result.percentile.toFixed(1) + "% of houses in the dataset"
 }
 
 </script>

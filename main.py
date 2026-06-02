@@ -1,7 +1,5 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from fastapi import Request
 
 from pydantic import BaseModel
 
@@ -9,7 +7,6 @@ import pandas as pd
 import joblib
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")
 model = joblib.load("house_price_pipeline.pkl")
 
 class House(BaseModel):
@@ -28,8 +25,9 @@ class House(BaseModel):
 
 
 @app.get("/",response_class=HTMLResponse)
-def home(request:Request):
-    return templates.TemplateResponse("index.html",{"request":request})
+def home():
+    with open("templates/index.html","r",encoding="utf-8") as file:
+        return HTMLResponse(content=file.read())
 
 @app.post("/predict")
 def predict(house:House):

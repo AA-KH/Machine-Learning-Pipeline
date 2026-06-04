@@ -1,5 +1,5 @@
 
-# House Price Predictor — Final README
+# House Price Predictor
 
 ## Quick Links
 

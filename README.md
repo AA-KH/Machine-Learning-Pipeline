@@ -106,20 +106,3 @@ uvicorn main:app --reload --port 8000
 Open `http://127.0.0.1:8000/` to use the UI.
 
 ---
-
-## Suggested improvements
-
-- Add input validation and helpful error messages for the API.
-- Include a `models/` directory with saved pipelines and metadata (training date, metrics, hyperparameters).
-- Add a `Dockerfile` and `docker-compose.yml` for containerized runs.
-- Add automated tests for the `/predict` endpoint using `pytest` and `httpx` and integrate them in CI.
-
----
-
-## Next steps I can do for you
-
-- Produce a small `Dockerfile` and `docker-compose.yml` for local deployment.
-- Add a minimal `tests/test_predict.py` suite and a GitHub Actions workflow for CI.
-- Help retrain the model and produce a reproducible training script or notebook.
-
-If you'd like one of these, tell me which and I'll create it and update the repository.
